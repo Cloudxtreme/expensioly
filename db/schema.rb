@@ -38,6 +38,19 @@ ActiveRecord::Schema.define(version: 20151027031825) do
 
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
 
+  create_table "expenses", force: :cascade do |t|
+    t.string   "name",                        null: false
+    t.decimal  "amount",      default: 0.0,   null: false
+    t.boolean  "shared",      default: false, null: false
+    t.integer  "category_id",                 null: false
+    t.integer  "user_id",                     null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
+  add_index "expenses", ["category_id"], name: "index_expenses_on_category_id", using: :btree
+  add_index "expenses", ["user_id"], name: "index_expenses_on_user_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "email",           null: false
     t.string   "password_digest", null: false
@@ -48,4 +61,6 @@ ActiveRecord::Schema.define(version: 20151027031825) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
+  add_foreign_key "expenses", "categories"
+  add_foreign_key "expenses", "users"
 end

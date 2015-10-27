@@ -1,0 +1,6 @@
+<h1>Expense: <%= @expense.name %></h1>
+
+<p>Amount: <%= number_to_currency(@expense.amount) %></p>
+<p>Paid by: <%= @expense.user.email %></p>
+<p>Category: <%= link_to @expense.category.name, @expense.category %></p>
+<p>Shared: <%= @expense.shared? %></p>

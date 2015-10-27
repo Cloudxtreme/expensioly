@@ -10,7 +10,7 @@ feature "Users can manage expenses" do
 
     expect(page).to have_content(expense.name)
     expect(page).to have_content(expense.amount.round(2))
-    expect(page).to have_content(expense.user.email)
+    expect(page).to have_content(expense.user.name)
     expect(page).to have_content(expense.category.name)
   end
 end

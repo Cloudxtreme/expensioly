@@ -11,7 +11,7 @@ feature "Users can sign in and out" do
     click_button "Sign in"
 
     expect(page).to have_content("Your profile")
-    expect(page).to have_content(user.email)
+    expect(page).to have_content(user.name)
   end
 
   scenario "A logged in user can sign out" do

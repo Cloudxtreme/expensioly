@@ -1,0 +1,5 @@
+before_script:
+  - psql -c 'create database expensioly_test;' -U postgres
+script: xvfb-run rake
+notifications:
+  email: false

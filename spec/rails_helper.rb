@@ -14,10 +14,11 @@ module Features
   include Formulaic::Dsl
 end
 
+Capybara::Webkit.configure do |config|
+  config.block_unknown_urls
+end
+
 RSpec.configure do |config|
-  config.before(:each, js: true) do
-    page.driver.block_unknown_urls
-  end
   config.include Features, type: :feature
   config.include Monban::Test::Helpers, type: :feature
   config.infer_base_class_for_anonymous_controllers = false

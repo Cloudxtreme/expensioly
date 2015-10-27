@@ -10,5 +10,6 @@ Rails.application.routes.draw do
     root "sessions#new"
   end
 
+  resources :categories, only: [:create, :destroy, :index, :show]
   resource :session, only: [:new, :create, :destroy]
 end

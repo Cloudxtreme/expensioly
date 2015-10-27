@@ -1,3 +1,7 @@
-<h3>Your profile</h3>
+<h1>Your profile</h1>
 
 <p>Hi, <%= current_user.email %>! Have you heard the Good News about FI/RE?</p>
+
+<ul>
+  <li><%= link_to "Manage categories", categories_path %></li>
+</ul>

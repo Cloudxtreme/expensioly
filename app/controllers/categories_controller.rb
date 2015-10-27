@@ -6,6 +6,7 @@ class CategoriesController < ApplicationController
 
   def show
     @category = find_category
+    @expenses = @category.expenses
   end
 
   def create

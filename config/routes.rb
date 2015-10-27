@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   resources :categories, only: [:create, :destroy, :index, :show]
   resources :expenses, only: [:show]
   resource :session, only: [:new, :create, :destroy]
+  resources :users, only: [:show]
 end

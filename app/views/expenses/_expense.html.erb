@@ -1,0 +1,8 @@
+<div class="expense">
+  <p>
+    <%= link_to expense.user.name, expense.user %>
+    paid <%= number_to_currency(expense.amount) %>
+    for <%= link_to expense.name, expense %>
+    on <%= expense.created_at.strftime("%B %d, %Y") %>.
+  </p>
+</div>

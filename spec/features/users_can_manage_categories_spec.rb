@@ -23,11 +23,13 @@ feature "Users can manage categories" do
   scenario "users can view existing categories" do
     user = create(:user)
     category = create(:category)
+    expense = create(:expense, category: category, user: user)
     sign_in(user)
 
     visit category_path(category)
 
     expect(page).to have_content(category.name)
+    expect(page).to have_link(expense.name, href: expense_path(expense))
   end
 
   scenario "users can create new categories" do

@@ -59,3 +59,7 @@ end
 group :staging, :production do
   gem "rack-timeout"
 end
+
+group :production do
+  gem "rails_12factor"
+end

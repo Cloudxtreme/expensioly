@@ -1,0 +1,16 @@
+<div>
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+</div>
+<div>
+  <%= form.label :amount %>
+  <%= form.text_field :amount %>
+</div>
+<div>
+  <%= form.label :category_id %>
+  <%= form.select :category_id, Category.all.map { |category| [category.name, category.id] } %>
+</div>
+<div>
+  <%= form.label :shared %>
+  <%= form.check_box :shared %>
+</div>

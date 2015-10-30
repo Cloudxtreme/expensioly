@@ -4,3 +4,5 @@
 <p>Paid by: <%= @expense.user_name %></p>
 <p>Category: <%= link_to @expense.category_name, @expense.category %></p>
 <p>Shared: <%= @expense.shared? %></p>
+
+<p><%= link_to "Edit", edit_expense_path(@expense) %></p>

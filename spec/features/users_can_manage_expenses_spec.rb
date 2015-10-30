@@ -52,4 +52,17 @@ feature "Users can manage expenses" do
       expect(page).to have_content("Shared!")
     end
   end
+
+  scenario "users can edit existing expenses" do
+    user = create(:user)
+    expense = create(:expense, name: "Old Name")
+    sign_in(user)
+
+    visit expense_path(expense)
+    click_on "Edit"
+    fill_in "Name", with: "New Name"
+    click_on "Update expense"
+
+    expect(page).to have_content("New Name")
+  end
 end

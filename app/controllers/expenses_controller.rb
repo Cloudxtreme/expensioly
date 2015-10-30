@@ -14,10 +14,26 @@ class ExpensesController < ApplicationController
     if expense.save
       flash[:alert] = "Expense'd!"
     else
-      flash[:error] = "#{expense.errors.full_messages.join(", ")}! D:"
+      flash[:error] = expense.error_message
     end
 
     redirect_to expenses_path
+  end
+
+  def edit
+    @expense = find_expense
+  end
+
+  def update
+    expense = find_expense
+
+    if expense.update(expense_params)
+      flash[:alert] = "Updated!"
+    else
+      flash[:error] = expense.error_message
+    end
+
+    redirect_to expense_path(expense)
   end
 
   private

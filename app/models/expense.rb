@@ -9,4 +9,8 @@ class Expense < ActiveRecord::Base
 
   delegate :name, to: :category, prefix: true
   delegate :name, to: :user, prefix: true
+
+  def error_message
+    errors.full_messages.join(", ") + "! D:"
+  end
 end

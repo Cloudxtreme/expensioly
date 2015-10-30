@@ -3,6 +3,10 @@
     <%= link_to expense.user.name, expense.user %>
     paid <%= number_to_currency(expense.amount) %>
     for <%= link_to expense.name, expense %>
+    (<%= link_to expense.category.name, expense.category %>)
     on <%= expense.created_at.strftime("%B %d, %Y") %>.
+    <% if expense.shared? %>
+      <strong>Shared!</strong>
+    <% end %>
   </p>
 </div>

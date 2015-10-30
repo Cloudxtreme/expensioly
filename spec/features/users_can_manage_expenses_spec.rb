@@ -32,4 +32,24 @@ feature "Users can manage expenses" do
     expect(page).to have_content(expense.user.name)
     expect(page).to have_content(expense.category.name)
   end
+
+  scenario "users can create new expenses" do
+    user = create(:user)
+    expense = build(:expense, shared: true)
+    sign_in(user)
+
+    visit expenses_path
+    fill_in "Name", with: expense.name
+    fill_in "Amount", with: expense.amount
+    select(expense.category.name, from: "Category")
+    check "Shared"
+    click_on "Create expense"
+
+    within ".expenses" do
+      expect(page).to have_link(expense.name)
+      expect(page).to have_content(expense.amount.round(2))
+      expect(page).to have_link(expense.category.name)
+      expect(page).to have_content("Shared!")
+    end
+  end
 end

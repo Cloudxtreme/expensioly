@@ -1,3 +1,25 @@
 <h1>Expenses</h1>
 
+<%= form_for @new_expense do |f| %>
+  <div>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <div>
+    <%= f.label :amount %>
+    <%= f.text_field :amount %>
+  </div>
+  <div>
+    <%= f.label :category_id %>
+    <%= f.select :category_id, Category.all.map { |category| [category.name, category.id] } %>
+  </div>
+  <div>
+    <%= f.label :shared %>
+    <%= f.check_box :shared %>
+  </div>
+  <div>
+    <%= f.submit "Create expense" %>
+  </div>
+<% end %>
+
 <%= render @expenses %>

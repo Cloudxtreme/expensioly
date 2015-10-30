@@ -5,4 +5,7 @@
 <p>Category: <%= link_to @expense.category_name, @expense.category %></p>
 <p>Shared: <%= @expense.shared? %></p>
 
-<p><%= link_to "Edit", edit_expense_path(@expense) %></p>
+<p>
+  <%= link_to "Edit", edit_expense_path(@expense) %> |
+  <%= link_to "Delete", expense_path(@expense), method: :delete %>
+</p>

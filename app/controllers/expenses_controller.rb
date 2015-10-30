@@ -36,6 +36,12 @@ class ExpensesController < ApplicationController
     redirect_to expense_path(expense)
   end
 
+  def destroy
+    find_expense.destroy
+    flash[:alert] = "Deleted!"
+    redirect_to expenses_path
+  end
+
   private
 
   def find_expense

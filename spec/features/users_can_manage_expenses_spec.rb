@@ -65,4 +65,17 @@ feature "Users can manage expenses" do
 
     expect(page).to have_content("New Name")
   end
+
+  scenario "users can delete expenses" do
+    user = create(:user)
+    expense = create(:expense)
+    sign_in(user)
+
+    visit expense_path(expense)
+    click_on "Delete"
+
+    within "h1" do
+      expect(page).to_not have_content(expense.name)
+    end
+  end
 end

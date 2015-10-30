@@ -1,4 +1,8 @@
 class ExpensesController < ApplicationController
+  def index
+    @expenses = Expense.all.order(created_at: :desc)
+  end
+
   def show
     @expense = find_expense
   end
